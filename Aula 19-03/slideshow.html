@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Automático</title>
+    <link rel="stylesheet" href="slideshow.css">
+</head>
+<body>
+    <div class="slideshow-container">
+    <div class="slide fade">
+        <img src="imagem.1jpeg" alt="Imagem 1">
+    </div>
+    <div class="slide fade">
+        <img src="imagem2.jpeg" alt="Imagem 2">
+    </div>
+    <div class="slide fade">
+        <img src="imagem3.jpeg" alt="Imagem 3">
+    </div>
+    <div class="slide fade">
+        <img src="imagem4.jpeg" alt="Imagem 3">
+    </div>
+    <div class="slide fade">
+        <img src="imagem5.jpeg" alt="Imagem 3">
+    </div>
+    <div class="slide fade">
+        <img src="imagem6.jpeg" alt="Imagem 3">
+    </div>
+<!-- Botões de navegação -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <!-- Pontos de navegação -->
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+    <script src="slideshow.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+body {
+    /* Define a fonte padrão para o texto em toda a página como sans-serif */
+    font-family: sans-serif;
+    /* Define o layout do corpo como flexível para facilitar o alinhamento */
+    display: flex;
+    /* Alinha os itens horizontalmente no centro da tela */
+    justify-content: center;
+    /* Alinha os itens verticalmente no centro da tela */
+    align-items: center;
+    /* Garante que o corpo da página ocupe pelo menos a altura total da janela do navegador */
+    min-height: 100vh;
+    /* Define a cor de fundo da página como um cinza claro */
+    background-color: #f0f0f0;
+    /* Remove as margens padrão do navegador */
+    margin: 0;
+    /* Caminho da sua imagem */
+    background-image: url('desenho.jpg');
+    /* Faz com que a imagem de fundo cubra completamente a área do elemento, redimensionando-a conforme necessário */
+    background-size: cover;
+    /* Impede que a imagem de fundo se repita */
+    background-repeat: no-repeat;
+    /* Fixa a imagem de fundo, impedindo que ela role com o conteúdo da página */
+    background-attachment: fixed;
+}
+
+main {
+    /* Define a cor de fundo da área principal como branco */
+    background-color: white;
+    /* Adiciona um preenchimento interno de 20 pixels em todas as direções */
+    padding: 20px;
+    /* Arredonda as bordas do elemento principal */
+    border-radius: 8px;
+    /* Adiciona uma sombra sutil para dar um efeito de profundidade */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Define o layout do elemento principal como flexível */
+    display: flex;
+    /* Organiza os elementos filhos em uma coluna */
+    flex-direction: column;
+    /* Alinha os elementos filhos horizontalmente no centro */
+    align-items: center;
+}
+
+#drawingCanvas {
+    /* Adiciona uma borda cinza clara ao canvas */
+    border: 1px solid #ccc;
+    /* Adiciona uma margem inferior para separar o canvas de outros elementos */
+    margin-bottom: 15px;
+    /* Define o cursor do mouse como uma mira cruzada ao passar sobre o canvas */
+    cursor: crosshair;
+}
+
+.buttons {
+    /* Define o layout dos botões como flexível para alinhá-los horizontalmente */
+    display: flex;
+    /* Adiciona um espaço de 15 pixels entre os botões e o seletor de cor */
+    gap: 15px;
+    /* Alinha os itens verticalmente no centro do contêiner de botões */
+    align-items: center;
+}
+
+#colorPicker {
+    /* Define a largura do seletor de cor */
+    width: 40px;
+    /* Define a altura do seletor de cor */
+    height: 40px;
+    /* Remove a borda padrão do seletor de cor */
+    border: none;
+    /* Define o cursor do mouse como um ponteiro ao passar sobre o seletor de cor */
+    cursor: pointer;
+}
+
+.clear {
+    /* Adiciona preenchimento interno ao botão "Apagar" */
+    padding: 10px 20px;
+    /* Define a cor de fundo do botão como vermelho */
+    background-color: #e74c3c;
+    /* Define a cor do texto do botão como branco */
+    color: white;
+    /* Remove a borda do botão */
+    border: none;
+    /* Arredonda as bordas do botão */
+    border-radius: 5px;
+    /* Define o cursor do mouse como um ponteiro ao passar sobre o botão */
+    cursor: pointer;
+    /* Define o tamanho da fonte do botão */
+    font-size: 1em;
+}
+
+.clear:hover {
+    /* Define a cor de fundo do botão "Apagar" para um tom mais escuro de vermelho ao passar o mouse */
+    background-color: #c0392b;
+}
+

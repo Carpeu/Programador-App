@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Índices Financeiros Mensais</title>
+    <link rel="stylesheet" href="indice.css">
+    <style>
+        .resultado table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .resultado th, .resultado td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .resultado th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .loading {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta de Índices Financeiros Mensais</h1>
+        <form id="consultaForm">
+            <div class="form-group">
+                <label for="ano">Ano:</label>
+                <input type="number" id="ano" name="ano" min="2000" max="2025" required>
+            </div>
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script>
+        async function consultarIndicesFinanceiros(ano) {
+            // URL da API do Banco Central
+            const url = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json";
+
+            try {
+                // Fazer a requisição à API
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error("Erro ao consultar a API do Banco Central. Status: " + response.status);
+                }
+
+                const indices = await response.json();
+
+                // Filtrar os índices pelo ano fornecido
+                const indicesDoAno = indices.filter(indice => {
+                    const [, , indiceAno] = indice.data.split("/").map(Number);
+                    return indiceAno === ano;
+                });
+
+                if (indicesDoAno.length === 0) {
+                    return `Nenhum índice encontrado para o ano ${ano}.`;
+                }
+
+                // Agrupar por mês e calcular o índice mensal (considerando o último valor de cada mês)
+                const indicesMensais = {};
+                indicesDoAno.forEach(indice => {
+                    const [dia, mes, anoIndice] = indice.data.split("/").map(Number);
+                    const mesAno = `${mes}/${anoIndice}`;
+                    indicesMensais[mesAno] = indice; // Salva o último valor encontrado para cada mês
+                });
+
+                const resultadoOrdenado = Object.entries(indicesMensais)
+                    .sort(([, a], [, b]) => {
+                        const [mesA, anoA] = a.data.split("/").map(Number);
+                        const [mesB, anoB] = b.data.split("/").map(Number);
+                        if (anoA !== anoB) return anoA - anoB;
+                        return mesA - mesB;
+                    })
+                    .map(([, item]) => item);
+
+                if (resultadoOrdenado.length === 0) {
+                    return `Nenhum índice encontrado para o ano ${ano}.`;
+                }
+
+                return resultadoOrdenado;
+
+            } catch (error) {
+                console.error("Erro ao consultar a API:", error);
+                return error.message || "Ocorreu um erro ao consultar a API.";
+            }
+        }
+
+        // Adicionando um listener para o formulário
+        document.addEventListener('DOMContentLoaded', () => {
+            const consultaForm = document.getElementById('consultaForm');
+            const resultadoDiv = document.getElementById('resultado');
+
+            if (consultaForm) {
+                consultaForm.addEventListener('submit', async (event) => {
+                    event.preventDefault(); // Impede o envio padrão do formulário
+
+                    const anoInput = document.getElementById('ano');
+                    const ano = parseInt(anoInput.value);
+
+                    if (isNaN(ano) || ano < 2000 || ano > 2025) {
+                        resultadoDiv.innerHTML = '<p class="error">Por favor, insira um ano válido.</p>';
+                        return;
+                    }
+
+                    resultadoDiv.innerHTML = '<p class="loading">Carregando...</p>';
+
+                    const resultados = await consultarIndicesFinanceiros(ano);
+
+                    if (typeof resultados === 'string') {
+                        resultadoDiv.innerHTML = `<p class="error">${resultados}</p>`;
+                    } else if (Array.isArray(resultados) && resultados.length > 0) {
+                        let html = '<table><thead><tr><th>Mês/Ano</th><th>Valor</th></tr></thead><tbody>';
+                        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                        resultados.forEach(item => {
+                            const [dia, mes, anoIndice] = item.data.split("/").map(Number);
+                            const mesNome = meses[mes - 1];
+                            html += `<tr><td>${mesNome}/${anoIndice}</td><td>${item.valor}</td></tr>`;
+                        });
+                        html += '</tbody></table>';
+                        resultadoDiv.innerHTML = html;
+                    } else {
+                        resultadoDiv.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

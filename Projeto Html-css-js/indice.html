@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página que aparece na aba do navegador -->
+    <title>Consulta de Índices Financeiros</title>
+    <!-- Link para o arquivo CSS que contém os estilos da página -->
+    <link rel="stylesheet" href="indice.css">
+</head>
+<body>
+     <!-- Div principal que contém todo o conteúdo da página -->
+     <div class="container">
+        <!-- Título principal da página -->
+        <h1>Consulta de Índices Financeiros Mensais (SELIC)</h1>
+
+        <!-- Formulário para o usuário inserir o ano e consultar os índices -->
+        <form id="consultaForm">
+            <!-- Grupo de formulário para o campo "Ano" -->
+            <div class="form-group">
+                <!-- Rótulo (label) para o campo de entrada do ano -->
+                <label for="ano">Ano:</label>
+                <!-- Cria um campo de entrada de número com id "ano", nome "ano", intervalo entre 1990 e 2025, e marcado como obrigatório -->
+                <input type="number" id="ano" name="ano" min="1990" max="2025" required>
+            </div>
+
+            <!-- Botão para enviar o formulário e realizar a consulta -->
+            <button type="submit">Consultar</button>
+        </form>
+
+        <!-- Div onde os resultados da consulta serão exibidos -->
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <!-- Link para o arquivo JavaScript que contém a lógica da consulta -->
+    <script src="indice.js"></script>
+</body>
+</html>

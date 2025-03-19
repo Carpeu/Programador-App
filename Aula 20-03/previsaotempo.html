@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <style>
+        /* Estilos CSS para a página */
+        body {
+            /* Define a fonte padrão do corpo da página */
+            font-family: Arial, sans-serif;
+            /* Centraliza o texto dentro do corpo da página */
+            text-align: center;
+            /* Adiciona uma margem superior para afastar o conteúdo do topo da tela */
+            margin-top: 50px;
+            /* Define a imagem de fundo para o corpo da página */
+            background-image: url('tempo.jpg'); 
+            /* Faz a imagem de fundo cobrir toda a área do corpo */
+            background-size: cover;
+            /* Impede que a imagem de fundo se repita */
+            background-repeat: no-repeat;
+            /* Fixa a imagem de fundo, impedindo que ela role com o conteúdo */
+            background-attachment: fixed;
+            /* Define a cor do texto padrão para branco para melhor contraste com a imagem de fundo */
+            color: black;
+        }
+        #weather {
+            /* Adiciona uma margem superior para afastar a div do tempo dos elementos acima */
+            margin-top: 20px;
+            /* Define o tamanho da fonte para a div do tempo */
+            font-size: 1.2em;    
+        }
+        
+        /* Estiliza o botão */
+        button {
+            /* Define o cursor como um ponteiro ao passar o mouse sobre o botão */
+            cursor: pointer;
+            /* Define a cor de fundo do botão */
+            background-color: #007bff; /* Cor azul */
+            /* Define a cor do texto do botão */
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Previsão do Tempo</h1>
+    <input type="text" id="city" placeholder="Digite a cidade">
+    <button onclick="getWeather()">Buscar</button>
+    <div id="weather"></div>
+    <script>
+        // Função assíncrona para obter a previsão do tempo
+        async function getWeather() {
+            // Obtém o valor digitado no campo de cidade
+            const city = document.getElementById('city').value;
+            // Verifica se a cidade foi digitada
+            if (!city) {
+                // Exibe um alerta se a cidade não foi informada
+                alert("Por favor, digite uma cidade.");
+                // Sai da função se a cidade não for informada
+                return;
+            }
+            // Sua chave de API do Weatherstack (substitua pela sua chave)
+            const apiKey = 'c315f3edada7bfe1766e77e233fd0bfd';
+            // Monta a URL da requisição da API com a chave e a cidade
+            const url = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`;
+            try {
+                // Faz a requisição para a API
+                const response = await fetch(url);
+                // Verifica se a resposta da API foi bem-sucedida (status 2xx)
+                if (!response.ok) {
+                    // Lança um erro se a requisição não foi bem-sucedida
+                    throw new Error("Cidade não encontrada ou erro na requisição.");
+                }
+                // Converte a resposta da API para formato JSON
+                const data = await response.json();
+                // Chama a função para exibir a previsão do tempo na tela
+                displayWeather(data);
+            } catch (error) {
+                // Se ocorrer um erro durante a requisição ou processamento, exibe a mensagem de erro na div "weather"
+                document.getElementById("weather").innerHTML = `<p>Erro: ${error.message}</p>`;
+            }
+        }
+        // Função para exibir a previsão do tempo na tela
+        function displayWeather(data) {
+            // Obtém a referência para a div onde a previsão será exibida
+            const weatherDiv = document.getElementById("weather");
+            // Verifica se os dados da API foram recebidos e contêm as informações necessárias
+            if (data && data.location && data.current) {
+                // Obtém o nome da cidade
+                const cityName = data.location.name;
+                // Obtém a temperatura atual
+                const temperature = data.current.temperature;
+                // Obtém a descrição do clima (pode haver mais de uma descrição, pegamos a primeira)
+                const description = data.current.weather_descriptions ? data.current.weather_descriptions[0] : 'N/A';
+                // Obtém a umidade
+                const humidity = data.current.humidity;
+                // Obtém a velocidade do vento
+                const windSpeed = data.current.wind_speed;
+                // Define o conteúdo HTML da div "weather" com as informações da previsão
+                weatherDiv.innerHTML = `
+                    <h2>${cityName}</h2>
+                    <p>Temperatura: ${temperature}°C</p>
+                    <p>Condição: ${description}</p>
+                    <p>Umidade: ${humidity}%</p>
+                    <p>Velocidade do vento: ${windSpeed} km/h</p>
+                `;
+            } else {
+                // Se os dados não puderem ser obtidos, exibe uma mensagem de erro genérica
+                weatherDiv.innerHTML = "<p>Não foi possível obter os dados do tempo para esta cidade.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>

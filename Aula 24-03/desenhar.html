@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhando com JavaScript</title>
+    <!-- Link para o arquivo CSS que estiliza a página -->
+    <link rel="stylesheet" href="desenhar.css">
+</head>
+<body>
+    <main> <!-- Tag semântica para o conteúdo principal da página -->
+        
+        <canvas id="drawingCanvas" width="550" height="300"></canvas>
+         <!-- Canvas onde o usuário pode desenhar 
+         O atributo "id" é usado para identificá-lo no JavaScript, 
+         e "width" e "height" definem o tamanho da área de desenho.-->
+        <div class="buttons">
+            <!-- Seletor de cor para mudar a cor do desenho -->
+            <input type="color" id="colorPicker">
+            <!-- Input do tipo "color" que permite ao usuário escolher uma cor para desenhar -->
+            <button onclick="clearBoard()" class="clear">Apagar</button>
+            <!-- Botão que, ao ser clicado, chama a função "clearBoard()" para limpar o canvas -->
+        </div>
+    </main>
+    <!-- Inclusão do arquivo JavaScript que contém a lógica do desenho -->
+    <script src="desenhar.js"></script>
+    <!-- Link para o arquivo JavaScript externo que contém a lógica para desenhar no canvas -->
+</body>
+</html>

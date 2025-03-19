@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de CEP</title>
+    <link rel="stylesheet" href="consultacep.css">
+</head>
+<body>
+    <!-- Div principal que contém todo o conteúdo da página -->
+    <div class="container">
+        <!-- Container principal da página que agrupa os elementos -->
+
+        <h1>Consulta de CEP</h1>
+        <!-- Título principal da página -->
+
+        <div class="form-group">
+            <!-- Div que agrupa o campo de entrada e o botão de consulta -->
+
+            <label for="cep">Digite o CEP:</label>
+            <!-- Rótulo do campo de entrada, informando ao usuário o que ele deve digitar -->
+            
+            <input type="text" id="cep" name="cep" placeholder="Ex: 70000-000" maxlength="9" required>
+            <!-- Campo de entrada de texto onde o usuário digita o CEP. 'maxlength="9"' limita a 9 caracteres, e 'required' torna o campo obrigatório -->
+            
+            <button type="button" onclick="consultarCEP()">Consultar</button>
+            <!-- Botão que, ao ser clicado, chama a função 'consultarCEP()' para realizar a consulta do CEP -->
+        </div>
+
+        <div id="resultado" class="resultado">
+            <!-- Div onde os resultados da consulta serão exibidos. Inicialmente está vazia -->
+        </div>
+
+        <button id="novaConsulta" type="button" style="display: none;" onclick="limparResultado()">Nova Consulta</button>
+        <!-- Botão de "Nova Consulta", que está inicialmente oculto (display: none). Quando clicado, chama a função 'limparResultado()' para limpar os resultados -->
+    </div>
+
+    <script src="consultacep.js"></script>
+    <!-- Link para o arquivo JavaScript externo (consultacep.js), que contém a lógica para realizar a consulta do CEP e manipular a página -->
+</body>
+</html>

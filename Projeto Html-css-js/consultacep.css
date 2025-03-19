@@ -1,0 +1,99 @@
+body {
+    font-family: sans-serif; /* Define a fonte padrão para o corpo da página como uma fonte sem serifa */
+    margin: 20px; /* Adiciona uma margem de 20 pixels em todas as direções ao redor do corpo da página */
+    background-color: #f4f4f4; /* Define a cor de fundo inicial do corpo da página como um cinza claro */
+    background-image: url('cep.jpg'); /* Define uma imagem chamada 'cep.jpg' como a imagem de fundo do corpo */
+    background-size: cover; /* Faz com que a imagem de fundo cubra completamente a área do elemento, redimensionando-a conforme necessário (pode cortar a imagem) */
+    background-repeat: no-repeat; /* Impede que a imagem de fundo se repita, mesmo que seja menor que a área do corpo */
+    background-position: center; /* Centraliza a imagem de fundo horizontalmente e verticalmente no corpo */
+    background-attachment: fixed; /* Fixa a imagem de fundo, impedindo que ela role com o conteúdo da página */
+}
+
+.container {
+    background-color: #fff; /* Define a cor de fundo do contêiner principal como branco */
+    padding: 20px; /* Adiciona um preenchimento de 20 pixels em todas as direções dentro do contêiner */
+    border-radius: 8px; /* Arredonda as bordas do contêiner em 8 pixels */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave ao contêiner */
+    max-width: 400px; /* Define a largura máxima do contêiner em 400 pixels */
+    margin: 0 auto; /* Centraliza o contêiner horizontalmente na página */
+}
+
+h1 {
+    text-align: center; /* Centraliza o texto do título */
+    color: #333; /* Define a cor do texto do título como um cinza escuro */
+    margin-bottom: 20px; /* Adiciona uma margem inferior de 20 pixels ao título */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Adiciona uma margem inferior de 20 pixels para agrupar elementos do formulário */
+}
+
+label {
+    display: block; /* Faz com que o rótulo ocupe uma linha inteira e se comporte como um bloco */
+    margin-bottom: 5px; /* Adiciona uma margem inferior de 5 pixels ao rótulo */
+    font-weight: bold; /* Deixa o texto do rótulo em negrito */
+    color: #555; /* Define a cor do texto do rótulo como um cinza médio */
+}
+
+input[type="text"] {
+    width: calc(100% - 12px); /* Define a largura do campo de entrada para 100% da largura do contêiner pai, subtraindo 12px para o preenchimento */
+    padding: 10px; /* Adiciona um preenchimento de 10 pixels em todas as direções dentro do campo de entrada */
+    border: 1px solid #ccc; /* Adiciona uma borda sólida de 1 pixel com a cor cinza claro */
+    border-radius: 4px; /* Arredonda as bordas do campo de entrada em 4 pixels */
+    box-sizing: border-box; /* Garante que o preenchimento e a borda sejam incluídos na largura total do elemento */
+    font-size: 16px; /* Define o tamanho da fonte do texto dentro do campo de entrada */
+}
+
+button {
+    background-color: #007bff; /* Define a cor de fundo do botão como azul */
+    color: white; /* Define a cor do texto do botão como branco */
+    padding: 10px 15px; /* Adiciona um preenchimento de 10 pixels na parte superior e inferior, e 15 pixels nas laterais */
+    border: none; /* Remove a borda do botão */
+    border-radius: 4px; /* Arredonda as bordas do botão em 4 pixels */
+    cursor: pointer; /* Altera o cursor do mouse para uma mão ao passar sobre o botão */
+    font-size: 16px; /* Define o tamanho da fonte do texto do botão */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na mudança da cor de fundo */
+    margin-top: 10px; /* Adiciona uma margem superior de 10 pixels ao botão */
+    display: block; /* Faz com que o botão ocupe toda a largura disponível */
+    margin-left: auto; /* Empurra o botão para a direita */
+    margin-right: auto; /* Empurra o botão para a esquerda */
+}
+
+button:hover {
+    background-color: #0056b3; /* Altera a cor de fundo do botão para um azul mais escuro ao passar o mouse sobre ele */
+}
+
+.resultado {
+    margin-top: 20px; /* Adiciona uma margem superior de 20 pixels à área de resultado */
+    padding: 15px; /* Adiciona um preenchimento de 15 pixels em todas as direções dentro da área de resultado */
+    border: 1px solid #ddd; /* Adiciona uma borda sólida de 1 pixel com a cor cinza claro à área de resultado */
+    border-radius: 4px; /* Arredonda as bordas da área de resultado em 4 pixels */
+    background-color: #f9f9f9; /* Define a cor de fundo da área de resultado como um cinza muito claro */
+}
+
+.resultado p {
+    margin-bottom: 8px; /* Adiciona uma margem inferior de 8 pixels aos parágrafos dentro da área de resultado */
+}
+
+.resultado strong {
+    font-weight: bold; /* Deixa o texto dentro da tag <strong> em negrito */
+}
+
+.error {
+    color: red; /* Define a cor do texto da classe 'error' como vermelho */
+    font-weight: bold; /* Deixa o texto da classe 'error' em negrito */
+}
+
+.loading {
+    color: #777; /* Define a cor do texto da classe 'loading' como um cinza médio */
+    font-style: italic; /* Deixa o texto da classe 'loading' em itálico */
+}
+
+#novaConsulta {
+    margin-top: 20px; /* Adiciona uma margem superior de 20 pixels ao botão de nova consulta */
+    background-color: #28a745; /* Define a cor de fundo do botão de nova consulta como verde */
+}
+
+#novaConsulta:hover {
+    background-color: #1e7e34; /* Altera a cor de fundo do botão de nova consulta para um verde mais escuro ao passar o mouse */
+}
