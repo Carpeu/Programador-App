@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Dominó</title>
+    <link rel="stylesheet" href="domino.css">
+</head>
+<body>
+    <!-- Container principal do jogo -->
+    <div class="game-container">
+        <!-- Tabuleiro do jogo -->
+        <div id="game-board">
+            <!-- Área central do tabuleiro onde as peças serão colocadas -->
+            <div id="center-area"></div>
+            
+            <!-- Container do Jogador 1 (posicionado no topo) -->
+            <div class="player-container" id="player1-container">
+                <!-- Nome do jogador -->
+                <div class="player-name">Jogador 1</div>
+                <!-- Área onde as peças do jogador serão exibidas -->
+                <div id="player1-area" class="player-area"></div>
+            </div>
+            
+            <!-- Container do Jogador 2 (posicionado à direita) -->
+            <div class="player-container" id="player2-container">
+                <div class="player-name">Jogador 2</div>
+                <!-- Área onde as peças do jogador serão exibidas -->
+                <div id="player2-area" class="player-area"></div>
+            </div>
+            
+            <!-- Container do Jogador 3 (posicionado na base) -->
+            <div class="player-container" id="player3-container">
+                <div class="player-name">Jogador 3</div>
+                <!-- Área onde as peças do jogador serão exibidas -->
+                <div id="player3-area" class="player-area"></div>
+            </div>
+            
+            <!-- Container do Jogador 4 (posicionado à esquerda) -->
+            <div class="player-container" id="player4-container">
+                <div class="player-name">Jogador 4</div>
+                <!-- Área onde as peças do jogador serão exibidas -->
+                <div id="player4-area" class="player-area"></div>
+            </div>
+            
+            <!-- Elemento para exibir de quem é a vez -->
+            <div id="turn-display"></div>
+        </div>
+        
+        <!-- Botão para reiniciar o jogo -->
+        <button id="reset-button">Reiniciar Jogo</button>
+    </div>
+
+    <!-- Link para o arquivo JavaScript com a lógica do jogo -->
+    <script src="domino.js"></script>
+</body>
+</html>

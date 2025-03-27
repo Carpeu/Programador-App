@@ -1,0 +1,95 @@
+/* Resetando as margens, preenchimentos e box-sizing para todos os elementos */
+* {
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    box-sizing: border-box; /* Garante que padding e border estejam dentro da largura e altura do elemento */
+}
+/* Estilização da área principal do jogo */
+.game-board {
+    width: 100%; /* Define a largura para 100% da tela */
+    height: 500px; /* Define a altura do tabuleiro do jogo */
+    margin: 0 auto; /* Centraliza o tabuleiro horizontalmente na tela */
+    position: relative; /* Permite posicionamento absoluto de elementos filhos */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas do tabuleiro */
+    background: linear-gradient(#87CEEB, #E0F6FF); /* Define um gradiente de fundo azul claro */
+}
+/* Estilização do cano */
+.pipe {
+    position: absolute; /* Posiciona o cano em relação ao .game-board */
+    bottom: 60px; /* Posiciona o cano a 60 pixels da parte inferior */
+    width: 65px; /* Define a largura do cano */
+    right: -80px; /* Posiciona o cano inicialmente fora da tela à direita */
+    animation: pipe-animation 2.5s infinite linear; /* Aplica a animação pipe-animation com duração de 2.5 segundos, infinitamente e de forma linear */
+    height: 80px; /* Define a altura do cano */
+}
+/* Estilização do Mario */
+.mario {
+    width: 150px; /* Define a largura do personagem Mario */
+    position: absolute; /* Posiciona o Mario em relação ao .game-board */
+    bottom: 60px; /* Posiciona o Mario a 60 pixels da parte inferior */
+}
+/* Estilização da animação de pulo */
+.jump {
+    animation: jump 500ms ease-out; /* Aplica a animação jump com duração de 500 milissegundos e função de tempo ease-out */
+}
+/* Estilização das nuvens */
+.clouds {
+    position: absolute; /* Posiciona as nuvens em relação ao .game-board */
+    width: 550px; /* Define a largura das nuvens */
+    animation: clouds-animation 20s infinite linear; /* Aplica a animação clouds-animation com duração de 20 segundos, infinitamente e de forma linear */
+}
+/* Estilização do chão */
+.ground {
+    position: absolute; /* Posiciona o chão em relação ao .game-board */
+    bottom: 0; /* Posiciona o chão na parte inferior do .game-board */
+    width: 100%; /* Define a largura do chão para 100% da tela */
+    height: 60px; /* Define a altura do chão */
+    background-image: url('ground1.png'); /* Define a imagem de fundo para o chão */
+    background-repeat: repeat-x; /* Repete a imagem de fundo horizontalmente */
+    animation: ground-animation 5s linear infinite; /* Aplica a animação ground-animation com duração de 5 segundos, infinitamente e de forma linear */
+}
+/* Definição da animação para o cano */
+@keyframes pipe-animation {
+    from {
+        right: -80px; /* Posição inicial do cano (fora da tela à direita) */
+    }
+    to {
+        right: 100%; /* Posição final do cano (fora da tela à direita) */
+    }
+}
+/* Definição da animação para o pulo do Mario */
+@keyframes jump {
+    0% {
+        bottom: 60px; /* Posição inicial (no chão) */
+    }
+    40% {
+        bottom: 240px; /* Ponto mais alto do pulo */
+    }
+    50% {
+        bottom: 240px; /* Mantém no ponto mais alto por um breve período */
+    }
+    60% {
+        bottom: 240px; /* Mantém no ponto mais alto por um breve período */
+    }
+    100% {
+        bottom: 60px; /* Posição final (no chão) */
+    }
+}
+/* Definição da animação para as nuvens */
+@keyframes clouds-animation {
+    from {
+        right: -550px; /* Posição inicial das nuvens (fora da tela à esquerda) */
+    }
+    to {
+        right: 100%; /* Posição final das nuvens (fora da tela à direita) */
+    }
+}
+/* Definição da animação para o chão (movimento da imagem) */
+@keyframes ground-animation {
+    from {
+        background-position: 0 0; /* Posição inicial da imagem de fundo */
+    }
+    to {
+        background-position: 100% 0; /* Posição final da imagem de fundo (movendo para a esquerda) */
+    }
+}

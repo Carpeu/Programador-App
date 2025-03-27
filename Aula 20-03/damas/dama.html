@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define o conjunto de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página -->
+    <title>Tabuleiro de Damas</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="dama.css">
+</head>
+<body>
+    <!-- Div principal do tabuleiro -->
+    <div class="board">
+        <!-- Linhas 0 a 2: Peças pretas nas casas brancas -->
+        <div class="row">
+            <!-- Casa 0-0 com peça preta -->
+            <div class="house" id="house-0-0"><div class="piece black" id="piece1" draggable="true"></div></div>
+            <!-- Casa 0-1 escura e vazia -->
+            <div class="house dark" id="house-0-1"></div>
+            <!-- Casa 0-2 com peça preta -->
+            <div class="house" id="house-0-2"><div class="piece black" id="piece2" draggable="true"></div></div>
+            <!-- Casa 0-3 escura e vazia -->
+            <div class="house dark" id="house-0-3"></div>
+            <!-- Casa 0-4 com peça preta -->
+            <div class="house" id="house-0-4"><div class="piece black" id="piece3" draggable="true"></div></div>
+            <!-- Casa 0-5 escura e vazia -->
+            <div class="house dark" id="house-0-5"></div>
+            <!-- Casa 0-6 com peça preta -->
+            <div class="house" id="house-0-6"><div class="piece black" id="piece4" draggable="true"></div></div>
+            <!-- Casa 0-7 escura e vazia -->
+            <div class="house dark" id="house-0-7"></div>
+        </div>
+        <!-- Segunda linha do tabuleiro --> 
+        <div class="row">
+            <!-- Casa 1-0 escura e vazia -->
+            <div class="house dark" id="house-1-0"></div>
+            <!-- Casa 1-1 com peça preta -->
+            <div class="house" id="house-1-1"><div class="piece black" id="piece5" draggable="true"></div></div>
+            <!-- Casa 1-2 escura e vazia -->
+            <div class="house dark" id="house-1-2"></div>
+            <!-- Casa 1-3 com peça preta -->
+            <div class="house" id="house-1-3"><div class="piece black" id="piece6" draggable="true"></div></div>
+            <!-- Casa 1-4 escura e vazia -->
+            <div class="house dark" id="house-1-4"></div>
+            <!-- Casa 1-5 com peça preta -->
+            <div class="house" id="house-1-5"><div class="piece black" id="piece7" draggable="true"></div></div>
+            <!-- Casa 1-6 escura e vazia -->
+            <div class="house dark" id="house-1-6"></div>
+            <!-- Casa 1-7 com peça preta -->
+            <div class="house" id="house-1-7"><div class="piece black" id="piece8" draggable="true"></div></div>
+        </div>
+        <!-- Terceira linha do tabuleiro -->
+        <div class="row">
+            <!-- Casa 2-0 com peça preta -->
+            <div class="house" id="house-2-0"><div class="piece black" id="piece9" draggable="true"></div></div>
+            <!-- Casa 2-1 escura e vazia -->
+            <div class="house dark" id="house-2-1"></div>
+            <!-- Casa 2-2 com peça preta -->
+            <div class="house" id="house-2-2"><div class="piece black" id="piece10" draggable="true"></div></div>
+            <!-- Casa 2-3 escura e vazia -->
+            <div class="house dark" id="house-2-3"></div>
+            <!-- Casa 2-4 com peça preta -->
+            <div class="house" id="house-2-4"><div class="piece black" id="piece11" draggable="true"></div></div>
+            <!-- Casa 2-5 escura e vazia -->
+            <div class="house dark" id="house-2-5"></div>
+            <!-- Casa 2-6 com peça preta -->
+            <div class="house" id="house-2-6"><div class="piece black" id="piece12" draggable="true"></div></div>
+            <!-- Casa 2-7 escura e vazia -->
+            <div class="house dark" id="house-2-7"></div>
+        </div>
+        <!-- Linhas 3 e 4: Casas vazias -->
+        <div class="row">
+            <!-- Casa 3-0 escura e vazia -->
+            <div class="house dark" id="house-3-0"></div>
+            <!-- Casa 3-1 branca e vazia -->
+            <div class="house" id="house-3-1"></div>
+            <!-- Casa 3-2 escura e vazia -->
+            <div class="house dark" id="house-3-2"></div>
+            <!-- Casa 3-3 branca e vazia -->
+            <div class="house" id="house-3-3"></div>
+            <!-- Casa 3-4 escura e vazia -->
+            <div class="house dark" id="house-3-4"></div>
+            <!-- Casa 3-5 branca e vazia -->
+            <div class="house" id="house-3-5"></div>
+            <!-- Casa 3-6 escura e vazia -->
+            <div class="house dark" id="house-3-6"></div>
+            <!-- Casa 3-7 branca e vazia -->
+            <div class="house" id="house-3-7"></div>
+        </div>
+        <!-- Quinta linha do tabuleiro -->
+        <div class="row">
+            <!-- Casa 4-0 branca e vazia -->
+            <div class="house" id="house-4-0"></div>
+            <!-- Casa 4-1 escura e vazia -->
+            <div class="house dark" id="house-4-1"></div>
+            <!-- Casa 4-2 branca e vazia -->
+            <div class="house" id="house-4-2"></div>
+            <!-- Casa 4-3 escura e vazia -->
+            <div class="house dark" id="house-4-3"></div>
+            <!-- Casa 4-4 branca e vazia -->
+            <div class="house" id="house-4-4"></div>
+            <!-- Casa 4-5 escura e vazia -->
+            <div class="house dark" id="house-4-5"></div>
+            <!-- Casa 4-6 branca e vazia -->
+            <div class="house" id="house-4-6"></div>
+            <!-- Casa 4-7 escura e vazia -->
+            <div class="house dark" id="house-4-7"></div>
+        </div>
+        <!-- Linhas 5 a 7: Peças vermelhas nas casas brancas -->
+        <div class="row">
+            <!-- Casa 5-0 escura e vazia -->
+            <div class="house dark" id="house-5-0"></div>
+            <!-- Casa 5-1 com peça vermelha -->
+            <div class="house" id="house-5-1"><div class="piece red" id="piece13" draggable="true"></div></div>
+            <!-- Casa 5-2 escura e vazia -->
+            <div class="house dark" id="house-5-2"></div>
+            <!-- Casa 5-3 com peça vermelha -->
+            <div class="house" id="house-5-3"><div class="piece red" id="piece14" draggable="true"></div></div>
+            <!-- Casa 5-4 escura e vazia -->
+            <div class="house dark" id="house-5-4"></div>
+            <!-- Casa 5-5 com peça vermelha -->
+            <div class="house" id="house-5-5"><div class="piece red" id="piece15" draggable="true"></div></div>
+            <!-- Casa 5-6 escura e vazia -->
+            <div class="house dark" id="house-5-6"></div>
+            <!-- Casa 5-7 com peça vermelha -->
+            <div class="house" id="house-5-7"><div class="piece red" id="piece16" draggable="true"></div></div>
+        </div>
+        <!-- Sétima linha do tabuleiro -->
+        <div class="row">
+            <!-- Casa 6-0 com peça vermelha -->
+            <div class="house" id="house-6-0"><div class="piece red" id="piece17" draggable="true"></div></div>
+            <!-- Casa 6-1 escura e vazia -->
+            <div class="house dark" id="house-6-1"></div>
+            <!-- Casa 6-2 com peça vermelha -->
+            <div class="house" id="house-6-2"><div class="piece red" id="piece18" draggable="true"></div></div>
+            <!-- Casa 6-3 escura e vazia -->
+            <div class="house dark" id="house-6-3"></div>
+            <!-- Casa 6-4 com peça vermelha -->
+            <div class="house" id="house-6-4"><div class="piece red" id="piece19" draggable="true"></div></div>
+            <!-- Casa 6-5 escura e vazia -->
+            <div class="house dark" id="house-6-5"></div>
+            <!-- Casa 6-6 com peça vermelha -->
+            <div class="house" id="house-6-6"><div class="piece red" id="piece20" draggable="true"></div></div>
+            <!-- Casa 6-7 escura e vazia -->
+            <div class="house dark" id="house-6-7"></div>
+        </div>
+        <!-- Oitava linha do tabuleiro -->
+        <div class="row">
+            <!-- Casa 7-0 escura e vazia -->
+            <div class="house dark" id="house-7-0"></div>
+            <!-- Casa 7-1 com peça vermelha -->
+            <div class="house" id="house-7-1"><div class="piece red" id="piece21" draggable="true"></div></div>
+            <!-- Casa 7-2 escura e vazia -->
+            <div class="house dark" id="house-7-2"></div>
+            <!-- Casa 7-3 com peça vermelha -->
+            <div class="house" id="house-7-3"><div class="piece red" id="piece22" draggable="true"></div></div>
+            <!-- Casa 7-4 escura e vazia -->
+            <div class="house dark" id="house-7-4"></div>
+            <!-- Casa 7-5 com peça vermelha -->
+            <div class="house" id="house-7-5"><div class="piece red" id="piece23" draggable="true"></div></div>
+            <!-- Casa 7-6 escura e vazia -->
+            <div class="house dark" id="house-7-6"></div>
+            <!-- Casa 7-7 com peça vermelha -->
+            <div class="house" id="house-7-7"><div class="piece red" id="piece24" draggable="true"></div></div>
+        </div><br>
+        <button id="reset-button">Reiniciar Jogo</button>
+    </div> <br><br>
+    <!-- Seção de peças capturadas -->
+    <div class="captured-pieces">
+        <!-- Título da seção -->
+        <h2>Peças Capturadas</h2>
+        <!-- Peças vermelhas capturadas -->
+        <div class="captured-red">
+            <h3>Vermelhas:</h3>
+            <!-- Lista de peças vermelhas capturadas -->
+            <div class="pieces-list"></div>
+            <!-- Contador de peças vermelhas capturadas -->
+            <p>Total: <span id="red-count">0</span></p>
+        </div>
+        <!-- Peças pretas capturadas -->
+        <div class="captured-black">
+            <h3>Pretas:</h3>
+            <!-- Lista de peças pretas capturadas -->
+            <div class="pieces-list"></div>
+            <!-- Contador de peças pretas capturadas -->
+            <p>Total: <span id="black-count">0</span></p>
+        </div>
+    </div>
+        <div id="current-player">Jogador Atual: Vermelho</div>
+        <br>
+    <!-- Link para o arquivo JavaScript -->
+    <script src="dama.js"></script>
+</body>
+</html>

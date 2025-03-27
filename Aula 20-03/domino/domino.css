@@ -1,0 +1,309 @@
+body {
+    /* Remove margens e preenchimentos padrão do corpo da página. */
+    margin: 0;
+    padding: 0;
+    /* Configura o corpo para usar flexbox, centralizando o conteúdo. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Define a altura mínima do corpo para ocupar toda a viewport. */
+    min-height: 100vh;
+    /* Define a cor de fundo do corpo. */
+    background-color: #1a1a1a;
+    /* Define a fonte padrão para o texto na página. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.game-container {
+    /* Configura o contêiner do jogo para usar flexbox, organizando os elementos em coluna. */
+    display: flex;
+    flex-direction: column;
+    /* Alinha os elementos do contêiner ao centro. */
+    align-items: center;
+    /* Adiciona preenchimento ao contêiner. */
+    padding: 20px;
+}
+#game-board {
+    /* Define a posição do tabuleiro como relativa para posicionar elementos dentro dele. */
+    position: relative;
+    /* Define a largura do tabuleiro. */
+    width: 1400px;
+    /* Define a altura do tabuleiro. */
+    height: 1000px;
+    /* Define a cor de fundo do tabuleiro. */
+    background-color: #0d5e3f;
+    /* Define a borda do tabuleiro. */
+    border: 3px solid #1a3a29;
+    /* Adiciona margem na parte inferior do tabuleiro. */
+    margin-bottom: 30px;
+    /* Define o raio da borda do tabuleiro. */
+    border-radius: 15px;
+    /* Adiciona sombra ao tabuleiro. */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    /* Garante que o conteúdo dentro do tabuleiro não ultrapasse suas bordas. */
+    overflow: hidden;
+}
+#center-area {
+    /* Define a posição da área central como absoluta para posicioná-la dentro do tabuleiro. */
+    position: absolute;
+    /* Posiciona a área central no centro vertical do tabuleiro. */
+    top: 50%;
+    /* Posiciona a área central no centro horizontal do tabuleiro. */
+    left: 50%;
+    /* Centraliza a área central usando transformações. */
+    transform: translate(-50%, -50%);
+    /* Define a largura da área central. */
+    width: 900px;
+    /* Define a altura da área central. */
+    height: 600px;
+    /* Define a borda da área central. */
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    /* Define o raio da borda da área central. */
+    border-radius: 15px;
+    /* Define a cor de fundo da área central com transparência. */
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.player-container {
+    /* Define a posição do contêiner do jogador como absoluta. */
+    position: absolute;
+    /* Configura o contêiner do jogador para usar flexbox, organizando os elementos em coluna. */
+    display: flex;
+    flex-direction: column;
+    /* Alinha os elementos do contêiner do jogador ao centro. */
+    align-items: center;
+    /* Adiciona uma transição suave para mudanças de estilo. */
+    transition: all 0.3s ease;
+}
+.player-name {
+    /* Define o tamanho da fonte do nome do jogador. */
+    font-size: 24px;
+    /* Define a espessura da fonte do nome do jogador. */
+    font-weight: bold;
+    /* Adiciona margem na parte inferior do nome do jogador. */
+    margin-bottom: 15px;
+    /* Define a cor do texto do nome do jogador. */
+    color: white;
+    /* Adiciona sombra ao texto do nome do jogador. */
+    text-shadow: 2px 2px 4px black;
+    /* Adiciona preenchimento ao nome do jogador. */
+    padding: 5px 15px;
+    /* Define a cor de fundo do nome do jogador com transparência. */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Define o raio da borda do nome do jogador. */
+    border-radius: 20px;
+}
+.player-area {
+    /* Define a largura da área do jogador. */
+    width: 300px;
+    /* Define a altura da área do jogador. */
+    height: 200px;
+    /* Define a borda da área do jogador. */
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    /* Configura a área do jogador para usar flexbox, centralizando o conteúdo. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Define o raio da borda da área do jogador. */
+    border-radius: 10px;
+    /* Define a cor de fundo da área do jogador com transparência. */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Adiciona sombra interna à área do jogador. */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+#player1-container {
+    /* Posiciona o contêiner do jogador 1 na parte superior central do tabuleiro. */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#player2-container {
+    /* Posiciona o contêiner do jogador 2 na lateral direita central do tabuleiro. */
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+#player3-container {
+    /* Posiciona o contêiner do jogador 3 na parte inferior central do tabuleiro. */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#player4-container {
+    /* Posiciona o contêiner do jogador 4 na lateral esquerda central do tabuleiro. */
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+.domino-piece {
+    /* Define a posição da peça de dominó como absoluta. */
+    position: absolute;
+    /* Define a largura da peça de dominó. */
+    width: 80px;
+    /* Define a altura da peça de dominó. */
+    height: 160px;
+    /* Define a cor de fundo da peça de dominó. */
+    background-color: #fff;
+    /* Define a borda da peça de dominó. */
+    border: 3px solid #000;
+    /* Configura a peça de dominó para usar flexbox, organizando os elementos em coluna e espaçando-os. */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* Define o cursor como "grab" para indicar que a peça pode ser arrastada. */
+    cursor: grab;
+    /* Impede a seleção de texto na peça de dominó. */
+    user-select: none;
+    /* Define o tamanho da fonte do texto na peça de dominó. */
+    font-size: 28px;
+    /* Define a espessura da fonte do texto na peça de dominó. */
+    font-weight: bold;
+    /* Adiciona transições suaves para mudanças de estilo. */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Define o raio da borda da peça de dominó. */
+    border-radius: 8px;
+    /* Adiciona sombra à peça de dominó. */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+.domino-piece:hover {
+    /* Adiciona sombra dourada ao passar o mouse sobre a peça de dominó. */
+    box-shadow: 0 0 15px gold;
+    /* Aumenta ligeiramente a escala da peça de dominó ao passar o mouse. */
+    transform: scale(1.08);
+    /* Define o z-index da peça de dominó para garantir que ela fique acima de outros elementos ao passar o mouse. */
+    z-index: 100;
+}
+.domino-piece.placed {
+    /* Adiciona uma sombra dourada mais forte para peças colocadas. */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+.domino-piece .top, .domino-piece .bottom {
+    /* Configura as partes superior e inferior da peça de dominó para usar flexbox, centralizando o conteúdo. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Define a largura das partes superior e inferior da peça de dominó. */
+    width: 100%;
+    /* Define a altura das partes superior e inferior da peça de dominó. */
+    height: 50%;
+    /* Define a cor do texto nas partes superior e inferior da peça de dominó. */
+    color: #000;
+    /* Adiciona transições suaves para mudanças de estilo. */
+    transition: all 0.3s ease;
+}
+.domino-piece[data-rotation="90"] {
+    /* Rotaciona a peça de dominó 90 graus. */
+    transform: rotate(90deg);
+}
+.domino-piece[data-rotation="180"] {
+    /* Rotaciona a peça de dominó 180 graus. */
+    transform: rotate(180deg);
+}
+.domino-piece[data-rotation="270"] {
+    /* Rotaciona a peça de dominó 270 graus. */
+    transform: rotate(270deg);
+}
+#reset-button {
+    /* Adiciona preenchimento ao botão de reset. */
+    padding: 12px 30px;
+    /* Define o tamanho da fonte do botão de reset. */
+    font-size: 18px;
+    /* Define o cursor como "pointer" para indicar que o botão é clicável. */
+    cursor: pointer;
+    /* Define a cor de fundo do botão de reset. */
+    background-color: #007bff;
+    /* Define a cor do texto do botão de reset. */
+    color: white;
+    /* Remove a borda do botão de reset. */
+    border: none;
+    /* Define o raio da borda do botão de reset. */
+    border-radius: 8px;
+    /* Adiciona transições suaves para mudanças de estilo. */
+    transition: all 0.3s ease;
+    /* Adiciona margem na parte superior do botão de reset. */
+    margin-top: 20px;
+    /* Adiciona sombra ao botão de reset. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Define a largura do botão de reset como automática. */
+    width: auto;
+    /* Define a largura mínima do botão de reset. */
+    min-width: 180px;
+}
+#reset-button:hover {
+    /* Define uma cor de fundo mais escura ao passar o mouse sobre o botão de reset. */
+    background-color: #0056b3;
+    /* Move o botão de reset ligeiramente para cima ao passar o mouse. */
+    transform: translateY(-2px);
+    /* Adiciona uma sombra maior ao passar o mouse sobre o botão de reset. */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+#reset-button:active {
+    /* Move o botão de reset ligeiramente para baixo ao clicar. */
+    transform: translateY(1px);
+    /* Adiciona uma sombra menor ao clicar no botão de reset. */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#turn-display {
+    /* Define a posição do display de turno como absoluta. */
+    position: absolute;
+    /* Posiciona o display de turno na parte superior esquerda do tabuleiro. */
+    top: 20px;
+    left: 20px;
+    /* Define o tamanho da fonte do display de turno. */
+    font-size: 24px;
+    /* Define a espessura da fonte do display de turno. */
+    font-weight: bold;
+    /* Define a cor do texto do display de turno. */
+    color: white;
+    /* Adiciona sombra ao texto do display de turno. */
+    text-shadow: 1px 1px 2px black;
+    /* Define a cor de fundo do display de turno com transparência. */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adiciona preenchimento ao display de turno. */
+    padding: 10px 20px;
+    /* Define o raio da borda do display de turno. */
+    border-radius: 5px;
+}
+@keyframes dealAnimation {
+    /* Define a animação de dealing para as peças de dominó. */
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+.dealing {
+    /* Aplica a animação de dealing às peças de dominó. */
+    animation: dealAnimation 0.5s ease-out forwards;
+}
+@keyframes placeAnimation {
+    /* Define a animação de placement para as peças de dominó. */
+    0% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.placing {
+    /* Aplica a animação de placement às peças de dominó. */
+    animation: placeAnimation 0.3s ease-out;
+}
+@keyframes pulse {
+    /* Define a animação de pulso para o botão de reset. */
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.pulse {
+    /* Aplica a animação de pulso ao botão de reset. */
+    animation: pulse 1s infinite;
+}
